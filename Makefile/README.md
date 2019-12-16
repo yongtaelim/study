@@ -92,4 +92,45 @@ clean:
 	@rm -f test1 test2 simple_test
 ```
 
+## function support by Makefile
+### subst
+```
+$(subst from, to, text)
+```
+this function is finds 'from' in 'text' and changes 'to'.
+```
+input : $(subst ame, Ame, game jame)
+output : gAme jAme
+```
+
+### patsubst
+```
+$(patsubst pattern, replacement, text)
+```
+this function is finds 'pattern' in 'text' and changes 'replacement'. however, it is defferent to 'subst' because it changes patterns, not text.
+```
+input : $(patsubst %.c,%o,x.c.c bar.c
+output : x.c.o.bar.o 
+```
+
+### wildcard
+```
+$(wildcard ../target/*.c)
+```
+this function is loads files.
+```
+input : $(wildcard ../target/*.c)
+output : ../target/main.c ../target/source.c
+```
+
+### notdir
+```
+$(notdir names...)
+```
+this function deletes the path from the name.
+```
+input : $(notdir forge/target.c name.c pms/fiya.mp3)
+output : target.c name.c fiya.mp3
+```
+
 
