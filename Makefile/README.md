@@ -98,6 +98,18 @@ test2:
 clean:
 	@rm -f test1 test2 simple_test
 ```
+### ignore example
+* execute command:
+```
+make ignore
+```
+* Makefile:
+```
+ignore: 
+	-ls -l asdklfjas.txt
+	@echo "all...."
+
+```
 
 ## function support by Makefile
 ### subst
