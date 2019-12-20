@@ -9,6 +9,13 @@
 * analyze dependent structure quickly and easy to manage.
 * simple repetitive task and minimize productivity.
 
+## Find order
+```
+1. GNUmakefile
+2. makefile
+3. Makefile
+```
+
 ## Syntax
 ```
 targets : prerequisities
