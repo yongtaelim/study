@@ -15,4 +15,4 @@
 > 일반적으로 Digital signature는 RSA 알고리즘을 이용한다. Root CA에서 요청자 문서의 hash값을 구하고 RSA private key로 암호화한다. 그리고 암호화한 값(signature)을 해당 문서 뒤에 첨부한다. 이 문서를 받은 peer는 서명한 Root CA public key로 복호화한 signature와 비교한다. 일치한다면 Root CA에서 signature된 문서라고 판단한다.
 
 ## Chain of trust
-> 
+ ![](images/ChainOfTrust.png)
