@@ -152,4 +152,12 @@ input : $(notdir forge/target.c name.c pms/fiya.mp3)
 output : target.c name.c fiya.mp3
 ```
 
-
+### target name
+```
+${@}
+```
+this function get target name
+```
+input : test: @echo ${@}
+output : test    
+```
