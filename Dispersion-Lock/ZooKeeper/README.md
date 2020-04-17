@@ -10,7 +10,7 @@
 ##데이터 모델
 
 ZooKeeper는 밑의 그림과 같은 디렉터리 구조로 데이터를 저장한다. 특징을 살펴보면 Persistent를 유지하기 위해서 트랜잭션 로그와 스냅샷 파일이 디스크에 저장되어 시스템을 재시작해도 데이터가 유지된다. 각각의 디렉터리 노드를 znode라고 명명하며, 한 번 설정한 이름은 변경할 수 없고 스페이스를 포함할 수도 없다.
-![](../images/ZooKeeper-DataModel.png)
+![](../../images/ZooKeeper-DataModel.png)
 
 데이터를 저장하는 기본 단위인 노드 3가지가 있다
 - Persistent Node
@@ -30,7 +30,7 @@ ZooKeeper는 밑의 그림과 같은 디렉터리 구조로 데이터를 저장�
 노드 생성 시 sequence number가 자동으로 붙는 노드다. 이 기능을 확용해 분산 락 등을 구현가능하다.
 
 ##서버 구성도
-![](../images/ZooKeeper-Architecture.jpg)
+![](../../images/ZooKeeper-Architecture.jpg)
 Zookeeper 서버는 일반적으로 3대 이상 홀수로 구성된다. 서버 간의 데이터 불일치가 발생하면 데이터 보정이 필요한데 이때 과반수의 룰을 적용하기 때문에 서버를 홀수로 구성하는 것이 데이터 정합성 측면에서 유리하다. 그리고 ZooKeeper 서버는 Leader와 Follower로 구성되어 있다. 서버들끼리 자동으로 Leader를 선정하며 모든 데이터 저장을 주도한다.
 
 클라이언트에서 Server(Follower)로 데이터 저장을 시도할 때 Server(Follower) → Server(Leader) → 나머지 Server(Follower)로 데이터를 전달하는 구조이고, 모든 서버에 동일한 데이터가 저장된 후 클라이언트에게 성공/실패 여부를 알려주는 동기 방식으로 작동한다. 즉 모든 서버는 동일한 데이터를 각각 가지고 있고, 클라이언트가 어떤 서버에 연결되어 데이터를 가져가더라도 동일한 데이터를 가져가게 된다.
