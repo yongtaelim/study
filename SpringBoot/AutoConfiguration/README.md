@@ -1,8 +1,8 @@
-#AutoConfiguration
+# AutoConfiguration
 참조  
 http://dveamer.github.io/backend/SpringBootAutoConfiguration.html
 
-##개요
+## 개요
 
 Spring Boot는 Spring과 마찬가지로 component-scan을 통해 component들을 찾고 bean 생성을 진행한다. 그 과정에서 설정한 bean들이 생성된다. 
 
@@ -14,7 +14,7 @@ Spring Boot는 Spring과 마찬가지로 component-scan을 통해 component들�
 
 Spring에서는 ThreadPoolTaskExecutor를 사용하기 위해서는 우리가 해당 bean을 등록해야하지만 Spring Boot에서는 등록하지 않아도 해당 bean이 자동으로 생성되기 때문에 사용할 수 있다.
 
-##@EnableAutoConfiguration
+## @EnableAutoConfiguration
 
 auto configuration 기능을 사용하겠다는 설정이다. 일반적으로 아래와 같이 @ComponentScan과 함께 사용
 
@@ -45,7 +45,7 @@ com.dveamer.sample 하위 모든 패키지를 component scan 범위로 잡겠다
 
 Spring Boot는 @Condition과 @Conditional을 이용해서 이와 같은 문제를 해결하여 AutoConfiguration 기능을 우리에게 제공한다.
 
-##Auto Configuration Filters & Conditions
+## Auto Configuration Filters & Conditions
 
 Spring boot가 미리 정의해둔 AutoConfiguration 정보는 spring-boot-autoconfigure/META-INF/spring.factories에서 혹은 spring.factories에서 확인 가능하다.
 
@@ -81,7 +81,7 @@ org.springframework.boot.autoconfigure.data.cassandra.CassandraReactiveDataAutoC
 
 Auto Configuration Import Filters와 몇가지 @Conditional을 살펴보는 과정을 통해 AutoConfiguration의 원리를 살펴본다.
 
-###Auto Configuration Import Filters
+### Auto Configuration Import Filters
 
 Spring Boot는 spring.factories 정보를 가지고 auto configuration을 진행한다.
 
@@ -109,7 +109,7 @@ org.springframework.boot.autoconfigure.condition.OnWebApplicationCondition
 - WebApplicationContext의 존재유무에 대해서 다루는 필터
 - 대상 : @ConditionalOnWebApplication, @ConditionalOnNotWebApplication
 
-###@CondisionalOnMissingBean
+### @CondisionalOnMissingBean
 
 특정 bean이 사전에 생성되지 않은 경우 조건이 만족된다. @Bean과 함께 사용된다면 이미 생성된 bean이 없을 때 해당 bean을 생성한다는 의미로 보시면 된다.
 
@@ -159,7 +159,7 @@ public class CustomizedAsyncConfig {
 }
 ```
 
-###@ConditionalOnBean
+### @ConditionalOnBean
 
 특정 bean이 이미 생성되어있는 경우에만 조건이 만족된다. 작업을 위해 필수적으로 필요한 bean이 미리 생성되어있는지 체크할 때 사용할 수 있다.
 
@@ -177,7 +177,7 @@ public class jdbc {
 }
 ```
 
-###@ConditionalOnClass
+### @ConditionalOnClass
 
 classpath에 특정 class가 존재할 때만 조건이 만족된다. 작업을 위해 필수적으로 필요한 의존성이 등록되어있는지 체크할 때 사용한다.
 
@@ -224,7 +224,7 @@ runtimeOnly 'com.h2database:h2
 spring.h2.console.enabled=true
 ```
 
-###@SpringBootApplication
+### @SpringBootApplication
 
 @SpringBootApplication는 @ComponentScan과 @EnableAutoConfiguration을 포함하고 있다.
 
