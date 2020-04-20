@@ -7,20 +7,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 
-@FeignClient(name = "mock-api",
-            url = "http://localhost:8081/",
-            configuration = {FeignHeaderConfiguration.class})
+@FeignClient(name = "feign-api",
+        url = "http://localhost:8081/",
+        configuration = {FeignHeaderConfiguration.class})
 public interface FeignRpcInterface {
 
     /**
-     * default
+     * url : http://localhost:8080/items
+     * type : GET
      * @return
      */
     @GetMapping(value = "/items")
     String getItems();
 
     /**
-     * default
+     * url : http://localhost:8080/items/{id}
+     * type : GET
      * @param id
      * @return
      */
@@ -28,14 +30,18 @@ public interface FeignRpcInterface {
     String getItem(@PathVariable("id") Long id);
 
     /**
-     * add header1
+     * url : http://localhost:8080/items
+     * type : GET
+     * header : {"key1" : "value1"}
      * @return
      */
     @GetMapping(value = "/items/headers", headers = "key1=value1")
     String getItemsHeaders1();
 
     /**
-     * add header2
+     * url : http://localhost:8080/items
+     * type : GET
+     * header : {"key1" : "value1"}
      * @param headers
      * @return
      */
