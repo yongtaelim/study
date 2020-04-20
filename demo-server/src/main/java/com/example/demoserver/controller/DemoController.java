@@ -22,6 +22,7 @@ public class DemoController {
 
     @GetMapping(value = "/items")
     public Map<Long, Object> getItems() {
+        System.out.println("Method :: getItems");
         return map;
     }
 
@@ -34,6 +35,11 @@ public class DemoController {
     @GetMapping(value = "/items/{id}")
     public Object getItem(@PathVariable("id") Long id) {
         return map.get(id);
+    }
+
+    @GetMapping(value = "/ping")
+    public String getAliveCheck() {
+        return "alive";
     }
 
 }

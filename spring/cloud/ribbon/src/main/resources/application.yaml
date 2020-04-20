@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+ribbon:
+  eureka:
+    enabled: true
+
+ribbon-service:
+  ribbon:
+    MaxAutoRetries: 1
+  listOfServers: localhost:8081,localhost:8082
