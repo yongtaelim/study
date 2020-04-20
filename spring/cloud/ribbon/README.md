@@ -10,12 +10,12 @@ Ribbon은 Client에 탑재하는 Load Balancer이다.
 
 ## Load Balancer
 
-우리가 일반적으로 사용하는 LoadBalancer 는 서버사이드 로드밸런싱을 처리하는 L4 Switch와 같은 하드웨어 장비였다.  하짐나 MSA에서는 이런 장비보다는 소프트웨어적으로 구현된 클라이언트사이드 로드밸런싱을 주로 이용한다.
-
+우리가 일반적으로 사용하는 LoadBalancer 는 서버사이드 로드밸런싱을 처리하는 L4 Switch와 같은 하드웨어 장비였다.  하짐나 MSA에서는 이런 장비보다는 소프트웨어적으로 구현된 클라이언트사이드 로드밸런싱을 주로 이용한다.  
+![](../../../images/server-side load balancing.png)    
 위는 일반적인 L4 Switch 기반의 로드 밸런서이다. Client는 L4의 주소만 알고 있으면되고 모든 로드 밸런싱은 L4에서 처리해주고 있다.
 
 이런 하드웨어 기반의 서버 사이드 로드 밸런서의 단점은 기본적으로 별도의 스위치 장비가 필요하기 때문에 상대적으로 비용이 많이 소모되게 되며 유연성도 떨어지게 된다. 또한 서버 목록의 추가는 수동으로 보통 이루어진다. 이러한 단점 때문에 클라이언트 사이드 로드밸런서가 MSA에서는 주로 사용된다. 클라이언트 사이드 로드밸런서를 사용하게되면 아래와 같이 아키텍쳐가 형성된다.
-
+![](../../../images/client-side load balancing.png)  
 ## Ribbon
 
 Spring Cloud에서는 위와 같은 클라이언트 사이드 로드밸런서로 Ribbon을 이용하고 있다. 
@@ -35,7 +35,8 @@ Ribbon의 구성요소로는 Rule, Ping, ServerList가 있다.
   - static, dynamic 모두 가능
 
 Ribbon의 가장 중요한 점은 `Retry`이다. 만약 Server에게 응답을 받지 못하였을 경우 동일한 서버로 재시도 하거나 다른 서버로 Retry하는 기능이다.
-
+![](../../../images/ribbon retry.png)  
+위의 경우 service 1에게 먼저 요청한 후 응답이 존재하지 않아 service 2로 Retry를 하여 성공응답을 받아낸 상황이다.
 ## Code
 `application.yaml`
 
