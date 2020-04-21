@@ -42,4 +42,10 @@ public class DemoController {
         return "alive";
     }
 
+    @GetMapping(value = "/three/block")
+    public String threeSecondsBlock() throws InterruptedException {
+        Thread.sleep(3000);
+        return "ok";
+    }
+
 }
