@@ -103,6 +103,3 @@ public interface FeignRpcInterface {
 - 선택1 : <https://www.mockable.io/> 를 이용하여 Mockup API Server를 띄워 테스트한다.
   - 방법 : <https://ricepower.tistory.com/10> 참조
 - 선택2 : ../demo-server project 생성 후 띄운다.  
-
-## TODO
-Retrofit 학습....
