@@ -53,13 +53,4 @@ class Student {
 	public String getCls() {
 		return cls;
 	}
-
-	public static void main(String[] args) {
-		List<String> list = new ArrayList<String>();
-		list.add("2");
-
-		List<String> list1 = new LinkedList<String>();
-		list1.add("4");
-	}
-
 }
