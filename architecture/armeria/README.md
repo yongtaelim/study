@@ -6,7 +6,7 @@ reference
 
 ## 스트리밍 처리
 ### 전통적인 데이터 처리 방식
-![](../images/traditional_data_processing.png)
+![](../../images/traditional_data_processing.png)
 데이터 처리 요청이 오면 payload 를 모두 Application의 메모리에 저장 한 후에 다음 처리를 해야한다. 추가로 필요한 데이터도 저장소에서 조회하여 메모리에 적재해야 한다.  
 
 이 방식의 문제점은 전달된 데이터는 물론 저장소에서 조회한 데이터까지 모든 데이터가 애플리케이션의 메모리에 적재되어야만 응답 메시지를 만들 수 있다.
@@ -14,7 +14,7 @@ reference
 만약 필요한 데이터의 크기가 메모리 용량보다 크다면 'out of memory' 에러가 발생하게 된다. 그리고 서비스를 운영하다보면 꼭 하나의 요청이 'out of memory'를 발생시키지 않더라도, 순간적으로 많은 요청이 몰리면서 다량의 GC가 발생, 서버가 정상적으로 응답하지 못하는 경우가 종종 나타난다.
 
 ### 스트림 처리 방식
-![](../images/stream_processing.png)
+![](../../images/stream_processing.png)
 
 많은 양의 데이터를 처리하는 Application에 Stream Processing을 적용하면 크기가 작은 시스템 메모리로도 많은 양의 데이터를 처리할 수 있다. 입력 데이터에 대한 파이프 라인을 만들어 데이터가 들어오는 대로 물 흐르듯이 구독(`subscribe`)하고, 처리한 뒤, 발생(`publish`)까지 한 번에 연결하여 처리할 수 있다.
 
@@ -22,9 +22,9 @@ reference
 
 ### 비동기 방식
 아래 그림은 비동기 프로세스와 동기 프로세스를 비교한 그림이다.
-![](../images/Synchronous.png)
+![](../../images/Synchronous.png)
 
-![](../images/Asynchronous.png)
+![](../../images/Asynchronous.png)
 
 동기 방식에서는 클라이언트가 서버에 요청을 보내면 응답을 받기 전짜리 blocking 된다. 따라서 요청을 2개 보내면 A의 응답이 끝나고 B를 요청할 수 있다.
 
@@ -96,7 +96,7 @@ public interface Subscription {
 이제 Reactive Streams에서 위 API를 사용하는 흐름을 살펴보자.
 
 
-![](../images/pubsub_processing.png)
+![](../../images/pubsub_processing.png)
 
 1. `Subscriber`가 `subscribe` 함수를 사용해 `Publisher`에게 구독을 요청한다.
 2. `Publisher`는 `onSubscribe` 함수를 사용해 `Subscriber`에게 `Subscription`을 전달한다.
