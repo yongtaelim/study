@@ -1,0 +1,10 @@
+spring:
+  # database
+    datasource:
+      url: jdbc:mysql://localhost:3306/batch?useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+      username: root
+      password: vnfmsqka0727!
+      driver-class-name: com.mysql.jdbc.Driver
+
+spring.batch.job.names: ${job.name:NONE}
+logging.level.org.springframework.batch: DEBUG

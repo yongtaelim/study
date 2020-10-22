@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.newploy.payroll.batch.mapper.PeopleMapper">
+
+    <select id="selectById" resultType="net.newploy.payroll.batch.entity.People">
+        SELECT person_id
+             , first_name
+             , last_name
+             , enabled
+          FROM people
+          WHERE enabled = #{enabled}
+    </select>
+
+    <update id="updateByEnabled">
+        UPDATE people
+           SET enabled = #{enabled}
+         WHERE person_id = #{item.personId}
+    </update>
+
+    <insert id="insert">
+        INSERT INTO people (
+            first_name
+            , last_name
+            , enabled
+        ) VALUES (
+            #{item.firstName}
+            , #{item.lastName}
+            , #{enabled}
+        )
+    </insert>
+</mapper>
