@@ -19,7 +19,7 @@ spring:
     open-in-view: false
     show-sql: true
     hibernate:
-      ddl-auto: create    # 항상 조심!!
+      ddl-auto:     # 항상 조심!!
     properties:
       hibernate:
         show_sql: true

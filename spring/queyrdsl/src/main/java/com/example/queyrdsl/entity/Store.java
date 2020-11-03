@@ -7,9 +7,8 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Getter
-@Setter
 @Entity
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Store {
 
     @Id

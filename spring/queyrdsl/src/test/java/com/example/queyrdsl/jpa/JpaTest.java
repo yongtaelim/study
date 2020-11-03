@@ -25,11 +25,6 @@ public class JpaTest {
     @Autowired
     private StoreRepository storeRepository;
 
-    @BeforeEach
-    public void setUp() {
-
-    }
-
     @Test
     void entity저장후조회() {
         //given
@@ -97,12 +92,13 @@ public class JpaTest {
                 .build();
 
         //when
-        Store saveStore = storeRepository.save(store);
+        storeRepository.save(store);
+        Store resultStore = storeRepository.findByName(storeName);
 
         //then
-        Assertions.assertEquals(saveStore.getName(), storeName);
+        Assertions.assertEquals(resultStore.getName(), storeName);
 
-        Collection<Staff> staff1 = saveStore.getStaff();
+        Collection<Staff> staff1 = resultStore.getStaff();
         Iterator<Staff> iterator = staff1.iterator();
         Staff next = iterator.next();
         Assertions.assertEquals(next.getName(), staffName);
