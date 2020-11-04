@@ -1,10 +1,14 @@
 package com.example.queyrdsl.entity;
 
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Entity
@@ -17,12 +21,11 @@ public class Store {
     private String name;
     private String address;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "store_id")
-    private Collection<Staff> staff;
+    @OneToMany(mappedBy = "store")
+    private List<Staff> staff = new ArrayList<>();
 
     @Builder
-    public Store(Long id, String name, String address, Collection<Staff> staff) {
+    public Store(Long id, String name, String address, List<Staff> staff) {
         this.id = id;
         this.name = name;
         this.address = address;
