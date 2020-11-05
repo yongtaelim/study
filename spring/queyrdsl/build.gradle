@@ -40,10 +40,6 @@ test {
 	useJUnitPlatform()
 }
 
-test {
-	useJUnitPlatform()
-}
-
 def querydslSrcDir = "$buildDir/generated/querydsl"
 
 querydsl {
@@ -55,6 +51,7 @@ sourceSets {
 	main.java.srcDirs querydslSrcDir
 }
 
+// 여기부터 gradle 5.0 이후로 추가
 configurations {
 	querydsl.extendsFrom compileClasspath
 }

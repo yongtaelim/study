@@ -1,4 +1,4 @@
-package com.example.queyrdsl.entity;
+package com.example.queyrdsl.store.entity;
 
 
 import lombok.AccessLevel;
@@ -6,9 +6,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Getter
 @Entity
@@ -21,14 +22,10 @@ public class Store {
     private String name;
     private String address;
 
-    @OneToMany(mappedBy = "store")
-    private List<Staff> staff = new ArrayList<>();
-
     @Builder
-    public Store(Long id, String name, String address, List<Staff> staff) {
+    public Store(Long id, String name, String address) {
         this.id = id;
         this.name = name;
         this.address = address;
-        this.staff = staff;
     }
 }

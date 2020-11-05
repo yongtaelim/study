@@ -1,9 +1,10 @@
 package com.example.queyrdsl.querydsl;
 
-import com.example.queyrdsl.entity.Staff;
-import com.example.queyrdsl.entity.Store;
-import com.example.queyrdsl.repository.StoreRepository;
-import com.example.queyrdsl.repository.support.StoreRepositorySupport;
+import com.example.queyrdsl.staff.entity.Staff;
+import com.example.queyrdsl.staff.repository.StaffRepository;
+import com.example.queyrdsl.store.entity.Store;
+import com.example.queyrdsl.store.repository.StoreRepository;
+import com.example.queyrdsl.store.support.StoreRepositorySupport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -26,14 +27,17 @@ public class StoreRepositorySupportTest {
     private StoreRepository storeRepository;
 
     @Autowired
+    private StaffRepository staffRepository;
+
+    @Autowired
     private StoreRepositorySupport storeRepositorySupport;
 
     @Test
     void findOneByNameTest() {
         //given
-        final Long id = 3L;
-        final String address = "주소3";
-        final String name = "스토어3";
+        final Long id = 5L;
+        final String address = "주소5";
+        final String name = "스토어5";
 
         Store store = Store.builder()
                 .id(id)
@@ -51,39 +55,88 @@ public class StoreRepositorySupportTest {
         Assertions.assertEquals(name, resultByStore.getName());
     }
 
+//    @Test
+//    void findStaffsByNameTest_Entity관계매핑되어있을경우() {
+//        //given
+//        final Long staffId1 = 2L;
+//        final String staffName1 = "staffName1";
+//        final Integer age1 = 31;
+//
+//
+//        final Long staffId2 = 3L;
+//        final String staffName2 = "staffName2";
+//        final Integer age2 = 41;
+//
+//        final Long id = 4L;
+//        final String address = "주소4";
+//        final String name = "스토어4";
+//
+//        Staff staff1 = Staff.builder()
+//                .id(staffId1)
+//                .name(staffName1)
+//                .age(age1)
+//                .build();
+//
+//        Staff staff2 = Staff.builder()
+//                .id(staffId2)
+//                .name(staffName2)
+//                .age(age2)
+//                .build();
+//
+//        Store store = Store.builder()
+//                .id(id)
+//                .address(address)
+//                .name(name)
+//                .staff(Arrays.asList(staff1, staff2))
+//                .build();
+//
+//        storeRepository.save(store);
+//
+//        //when
+//        List<Staff> staffs = storeRepositorySupport.findStaffsByName(name);
+//
+//        //then
+//        assertThat(staffs.size()).isGreaterThan(0);
+//        assertThat(staffs.get(0).getName()).isEqualTo(staffName1);
+//        assertThat(staffs.get(1).getName()).isEqualTo(staffName2);
+//    }
+
     @Test
-    void findStaffsByNameTest() {
+    void findStaffsByNameTest_Entity관계매핑안되어있는경우() {
         //given
-        final Long staffId1 = 2L;
-        final String staffName1 = "staffName1";
-        final Integer age1 = 31;
+        final Long staffId1 = 10L;
+        final String staffName1 = "staffName4";
+        final Integer age1 = 34;
 
 
-        final Long staffId2 = 3L;
-        final String staffName2 = "staffName2";
-        final Integer age2 = 41;
+        final Long staffId2 = 11L;
+        final String staffName2 = "staffName5";
+        final Integer age2 = 21;
 
-        final Long id = 4L;
-        final String address = "주소4";
-        final String name = "스토어4";
+        final Long id = 8L;
+        final String address = "주소6";
+        final String name = "스토어6";
 
         Staff staff1 = Staff.builder()
                 .id(staffId1)
                 .name(staffName1)
                 .age(age1)
+                .storeId(id)
                 .build();
 
         Staff staff2 = Staff.builder()
                 .id(staffId2)
                 .name(staffName2)
                 .age(age2)
+                .storeId(id)
                 .build();
+
+        staffRepository.saveAll(Arrays.asList(staff1, staff2));
 
         Store store = Store.builder()
                 .id(id)
                 .address(address)
                 .name(name)
-                .staff(Arrays.asList(staff1, staff2))
                 .build();
 
         storeRepository.save(store);

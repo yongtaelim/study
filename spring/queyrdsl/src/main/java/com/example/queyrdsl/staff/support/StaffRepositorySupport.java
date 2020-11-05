@@ -1,6 +1,6 @@
-package com.example.queyrdsl.repository.support;
+package com.example.queyrdsl.staff.support;
 
-import com.example.queyrdsl.entity.Staff;
+import com.example.queyrdsl.staff.entity.Staff;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.stereotype.Repository;
