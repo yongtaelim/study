@@ -1,8 +1,6 @@
 package net.newploy.payroll.batch.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +9,8 @@ import javax.persistence.Id;
 
 @ToString
 @Getter
-@Setter
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class People {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,4 +18,11 @@ public class People {
     private String firstName;
     private String lastName;
     private Integer enabled;
+
+    @Builder
+    public People(String firstName, String lastName, Integer enabled) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.enabled = enabled;
+    }
 }
