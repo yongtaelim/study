@@ -164,15 +164,15 @@ public class StoreRepositorySupportTest {
         assertThat(staffs.size()).isGreaterThan(0);
     }
 
-    @Test
-    void querydsl_Mysql내부함수_call() {
-        //given
-        final String name = "스토어6";
+@Test
+void querydsl_Mysql내부함수_call() {
+    //given
+    final String name = "스토어6";
 
-        //when
-        StoreVo store = storeRepositorySupport.findByName(name);
+    //when
+    StoreVo store = storeRepositorySupport.findByName(name);
 
-        //then
-        assertThat(store.getName()).isEqualTo("TEST_" + name);
-    }
+    //then
+    assertThat(store.getName()).isEqualTo("TEST_" + name);
+}
 }
