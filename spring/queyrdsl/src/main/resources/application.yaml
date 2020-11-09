@@ -13,7 +13,6 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
 
   jpa:
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     database: mysql
     generate-ddl: false
     open-in-view: false
@@ -21,6 +20,7 @@ spring:
       ddl-auto: none     # 항상 조심!!
     properties:
       hibernate:
+    database-platform: com.example.querydsl.configuration.MysqlCustomDialect
 #        show_sql: true
 #        format_sql: true
 #        use_sql_comments: true

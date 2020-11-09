@@ -1,11 +1,12 @@
-package com.example.queyrdsl.querydsl;
+package com.example.querydsl.querydsl;
 
-import com.example.queyrdsl.staff.entity.Staff;
-import com.example.queyrdsl.staff.repository.StaffRepository;
-import com.example.queyrdsl.staff.vo.StaffVo;
-import com.example.queyrdsl.store.entity.Store;
-import com.example.queyrdsl.store.repository.StoreRepository;
-import com.example.queyrdsl.store.support.StoreRepositorySupport;
+import com.example.querydsl.staff.entity.Staff;
+import com.example.querydsl.staff.repository.StaffRepository;
+import com.example.querydsl.staff.vo.StaffVo;
+import com.example.querydsl.store.entity.Store;
+import com.example.querydsl.store.repository.StoreRepository;
+import com.example.querydsl.store.support.StoreRepositorySupport;
+import com.example.querydsl.store.vo.StoreVo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -161,6 +162,17 @@ public class StoreRepositorySupportTest {
 
         //then
         assertThat(staffs.size()).isGreaterThan(0);
+    }
 
+    @Test
+    void querydsl_Mysql내부함수_call() {
+        //given
+        final String name = "스토어6";
+
+        //when
+        StoreVo store = storeRepositorySupport.findByName(name);
+
+        //then
+        assertThat(store.getName()).isEqualTo("TEST_" + name);
     }
 }

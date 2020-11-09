@@ -1,17 +1,19 @@
-package com.example.queyrdsl.store.support;
+package com.example.querydsl.store.support;
 
 
-import com.example.queyrdsl.staff.vo.StaffVo;
-import com.example.queyrdsl.store.entity.Store;
+import com.example.querydsl.staff.vo.StaffVo;
+import com.example.querydsl.store.entity.Store;
+import com.example.querydsl.store.vo.StoreVo;
 import com.querydsl.core.types.Projections;
+import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static com.example.queyrdsl.staff.entity.QStaff.staff;
-import static com.example.queyrdsl.store.entity.QStore.store;
+import static com.example.querydsl.staff.entity.QStaff.staff;
+import static com.example.querydsl.store.entity.QStore.store;
 
 @Repository
 public class StoreRepositorySupport extends QuerydslRepositorySupport {
@@ -27,11 +29,17 @@ public class StoreRepositorySupport extends QuerydslRepositorySupport {
         this.jpaQueryFactory = jpaQueryFactory;
     }
 
-    public List<Store> findByName(String name) {
+    public StoreVo findByName(String name) {
         return jpaQueryFactory
-                .selectFrom(store)
+                .select(Projections.fields(StoreVo.class,
+                        store.id
+                        , Expressions.stringTemplate("createPrefix({0})", store.name).as("name")
+                        , store.address
+                        ))
+                .from(store)
                 .where(store.name.eq(name))
-                .fetch();
+                .limit(1L)
+                .fetchOne();
     }
 
     public Store findOneByName(String name) {

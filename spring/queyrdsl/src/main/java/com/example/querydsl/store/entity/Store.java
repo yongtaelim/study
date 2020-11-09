@@ -1,4 +1,4 @@
-package com.example.queyrdsl.store.entity;
+package com.example.querydsl.store.entity;
 
 
 import lombok.AccessLevel;

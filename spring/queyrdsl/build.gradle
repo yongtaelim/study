@@ -24,7 +24,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 
-	implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:${project.version}")
+//	implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:${project.version}")
 
 	runtimeOnly 'mysql:mysql-connector-java'
 

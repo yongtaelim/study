@@ -1,4 +1,4 @@
-package com.example.queyrdsl.staff.vo;
+package com.example.querydsl.staff.vo;
 
 import lombok.Getter;
 import lombok.Setter;
