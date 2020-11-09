@@ -2,6 +2,7 @@ package com.example.queyrdsl.querydsl;
 
 import com.example.queyrdsl.staff.entity.Staff;
 import com.example.queyrdsl.staff.repository.StaffRepository;
+import com.example.queyrdsl.staff.vo.StaffVo;
 import com.example.queyrdsl.store.entity.Store;
 import com.example.queyrdsl.store.repository.StoreRepository;
 import com.example.queyrdsl.store.support.StoreRepositorySupport;
@@ -93,7 +94,7 @@ public class StoreRepositorySupportTest {
 //        storeRepository.save(store);
 //
 //        //when
-//        List<Staff> staffs = storeRepositorySupport.findStaffsByName(name);
+//        List<StaffVo> staffs = storeRepositorySupport.findStaffsByName(name);
 //
 //        //then
 //        assertThat(staffs.size()).isGreaterThan(0);
@@ -142,11 +143,24 @@ public class StoreRepositorySupportTest {
         storeRepository.save(store);
 
         //when
-        List<Staff> staffs = storeRepositorySupport.findStaffsByName(name);
+        List<StaffVo> staffs = storeRepositorySupport.findStaffsByName(name);
 
         //then
         assertThat(staffs.size()).isGreaterThan(0);
         assertThat(staffs.get(0).getName()).isEqualTo(staffName1);
         assertThat(staffs.get(1).getName()).isEqualTo(staffName2);
+    }
+
+    @Test
+    void querydsl_log비교() {
+        //given
+        final String name = "스토어6";
+
+        //when
+        List<StaffVo> staffs = storeRepositorySupport.findStaffsByName(name);
+
+        //then
+        assertThat(staffs.size()).isGreaterThan(0);
+
     }
 }

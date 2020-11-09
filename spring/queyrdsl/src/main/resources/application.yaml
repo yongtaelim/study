@@ -17,21 +17,22 @@ spring:
     database: mysql
     generate-ddl: false
     open-in-view: false
-    show-sql: true
     hibernate:
-      ddl-auto:     # 항상 조심!!
+      ddl-auto: none     # 항상 조심!!
     properties:
       hibernate:
-        show_sql: true
-        format_sql: true
-        use_sql_comments: true
+#        show_sql: true
+#        format_sql: true
+#        use_sql_comments: true
 
 
 
-logging:
-  level:
-    org:
-      hibernate:
-        SQL: DEBUG
-        type:
-          trace
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        SQL: DEBUG
+#        type:
+#          trace
+
+

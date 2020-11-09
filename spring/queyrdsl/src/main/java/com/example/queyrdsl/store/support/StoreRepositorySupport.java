@@ -1,9 +1,7 @@
 package com.example.queyrdsl.store.support;
 
 
-import com.example.queyrdsl.staff.entity.QStaff;
-import com.example.queyrdsl.staff.entity.Staff;
-import com.example.queyrdsl.store.entity.QStore;
+import com.example.queyrdsl.staff.vo.StaffVo;
 import com.example.queyrdsl.store.entity.Store;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -12,8 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static com.example.queyrdsl.staff.entity.QStaff.*;
-import static com.example.queyrdsl.store.entity.QStore.*;
+import static com.example.queyrdsl.staff.entity.QStaff.staff;
+import static com.example.queyrdsl.store.entity.QStore.store;
 
 @Repository
 public class StoreRepositorySupport extends QuerydslRepositorySupport {
@@ -48,9 +46,9 @@ public class StoreRepositorySupport extends QuerydslRepositorySupport {
      * @param name
      * @return
      */
-//    public List<Staff> findStaffsByName(String name) {
+//    public List<StaffVo> findStaffsByName(String name) {
 //        return jpaQueryFactory
-//                .select(Projections.fields(Staff.class,
+//                .select(Projections.fields(StaffVo.class,
 //                        staff.id
 //                        , staff.age
 //                        , staff.name
@@ -66,9 +64,9 @@ public class StoreRepositorySupport extends QuerydslRepositorySupport {
      * @param name
      * @return
      */
-    public List<Staff> findStaffsByName(String name) {
+    public List<StaffVo> findStaffsByName(String name) {
         return jpaQueryFactory
-                .select(Projections.constructor(Staff.class,
+                .select(Projections.fields(StaffVo.class,
                         staff.id
                         , staff.age
                         , staff.name
