@@ -21,19 +21,14 @@ spring:
     properties:
       hibernate:
 #        show_sql: true
-        format_sql: true
-        use_sql_comments: true
+#        format_sql: true
+#        use_sql_comments: true
     database-platform: com.example.querydsl.configuration.MysqlCustomDialect
 
-
-
-
-logging:
-  level:
-    org:
-      hibernate:
-        SQL: DEBUG
-        type:
-          trace
-
-
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        SQL: DEBUG
+#        type:
+#          trace
