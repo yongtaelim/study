@@ -164,15 +164,17 @@ public class StoreRepositorySupportTest {
         assertThat(staffs.size()).isGreaterThan(0);
     }
 
-@Test
-void querydsl_Mysql내부함수_call() {
-    //given
-    final String name = "스토어6";
+    @Test
+    void querydsl_Mysql내부함수_call() {
+        //given
+        final String name = "스토어6";
+        System.out.println("store 테이블 조회 시작");
 
-    //when
-    StoreVo store = storeRepositorySupport.findByName(name);
+        //when
+        StoreVo store = storeRepositorySupport.findByName(name);
+        System.out.println("store 테이블 조회 완료");
 
-    //then
-    assertThat(store.getName()).isEqualTo("TEST_" + name);
-}
+        //then
+        assertThat(store.getName()).isEqualTo("TEST_" + name);
+    }
 }

@@ -25,6 +25,7 @@ spring:
 #        use_sql_comments: true
     database-platform: com.example.querydsl.configuration.MysqlCustomDialect
 
+
 #logging:
 #  level:
 #    org:
@@ -32,3 +33,12 @@ spring:
 #        SQL: DEBUG
 #        type:
 #          trace
+
+# sql log 출력을 원하지 않을 경우 주석해제
+#decorator:
+#  datasource:
+#    p6spy:
+#      enable-logging: false
+
+
+
