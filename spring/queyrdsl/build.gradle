@@ -73,6 +73,5 @@ flyway {
 	user = 'root'
 	password = 'vnfmsqka0727!'
 	// driver = 'com.mysql.jdbc.Driver'  기본으로 등록되어있다고 한다.
-	locations = ["filesystem:${file('src' +
-			'/migration/mydb').absolutePath}"]
+	locations = [ 'db/migration' ]
 }
