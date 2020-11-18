@@ -1,0 +1,24 @@
+spring:
+  profiles:
+    active: local
+
+
+--- #local
+spring:
+  profiles: local
+  datasource:
+    url: jdbc:mysql://localhost:3306/testdb?useSSL=false&serverTimezone=UTC&characterEncoding=utf8
+    username: root
+    password: vnfmsqka0727!
+    driver-class-name: com.mysql.jdbc.Driver
+
+  jpa:
+    database: mysql
+    generate-ddl: false
+    open-in-view: false
+    hibernate:
+      ddl-auto: none     # 항상 조심!!
+  flyway:
+    enabled: true
+    baseline-on-migrate: true   # history table 생성
+    baseline-version: 0         #
